@@ -65,8 +65,7 @@ public:
     Iterator end();
 
   protected:
-    typedef BinaryTree<int, string> BinaryTree;
-    typedef typename BinaryTree::Position TPos;
+    typedef BinaryTree BinaryTree;
     TPos root() const;
     TPos finder(const int &k, const TPos &v);
     TPos inserter(const int &k, const string &x);
