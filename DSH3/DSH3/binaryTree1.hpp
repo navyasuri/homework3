@@ -22,10 +22,7 @@ class Entry
     Entry(const int &k = int(), const string &v = string()) : _key(k), _value(v) {}
 };
 
-class SearchTree
-{
-  public:
-    class Iterator;
+
 
   public:
     SearchTree();
@@ -52,6 +49,19 @@ class SearchTree
     int n;
 
   public:
+class SearchTree
+{
+public:
+    class Iterator{
+    private:
+        Tpos v;
+    public:
+        Iterator(const TPos& vv): v(vv) {}
+        const SearchTree& operator*() {return *v;}
+        SearchTree& 
+        
+        
+    };
     // . . .insert Iterator class declaration here
     // I made a change
 };
