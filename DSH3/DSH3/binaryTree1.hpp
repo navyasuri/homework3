@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string>
+#include "binaryTree2.cpp"
 using namespace std;
 
 class Entry
@@ -45,7 +46,7 @@ private:
 public:
     Iterator(const TPos &vv) : v(vv) {}
     const SearchTree &operator*() { return *v; }
-    SearchTree &
+    
 };
 public:
     SearchTree();
