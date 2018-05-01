@@ -33,6 +33,17 @@ class Entry
 
 class SearchTree
 {
+    public:
+    class Iterator
+    {
+      private:
+        Tpos v;
+
+      public:
+        Iterator(const TPos &vv) : v(vv) {}
+        const SearchTree &operator*() { return *v; }
+        SearchTree &
+    };
   public:
     SearchTree();
     int size() const;
@@ -56,18 +67,6 @@ class SearchTree
   private:
     BinaryTree T;
     int n;
-
-  public:
-    class Iterator
-    {
-      private:
-        Tpos v;
-
-      public:
-        Iterator(const TPos &vv) : v(vv) {}
-        const SearchTree &operator*() { return *v; }
-        SearchTree &
-    };
     // . . .insert Iterator class declaration here
     // I made a change
 };
