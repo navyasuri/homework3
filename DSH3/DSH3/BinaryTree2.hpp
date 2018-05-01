@@ -16,10 +16,7 @@ using namespace std;
 #include <list>
 
 
-
-
-
-class LinkedBinaryTree {
+class BinaryTree {
 protected:
     struct Node {
         int elem;
@@ -41,7 +38,7 @@ public:
         bool isRoot() const;
         bool isExternal() const;
         
-        friend class LinkedBinaryTree;
+        friend class BinaryTree;
         
     private:
         Node* v;
@@ -49,7 +46,7 @@ public:
     typedef std::list<Position> PositionList;
     
 public:
-    LinkedBinaryTree();
+    BinaryTree();
     int size() const;
     bool empty() const;
     Position root() const;
