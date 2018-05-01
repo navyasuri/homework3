@@ -10,16 +10,27 @@
 #define binaryTree1_hpp
 
 #include <stdio.h>
-using namespace std
-#include <string> 
+#include <string>
+using namespace std;
 
 class Entry
 {
-    int Key;
-    string Value;
+    public:
+    Entry(const int& k = 0, const string& v = "") : _key(k), _value(v) {}
 
-  public:
-    Entry(const int &k = int(), const string &v = string()) : _key(k), _value(v) {}
+    // Getters
+    const int& key() const{return _key;}
+    const string& value() const{return _value;}
+
+    // Setters
+    void setKey(const int& k){_key = k;}
+    void setValue(const string& v){_value = v;}
+
+    private:
+    int _key;
+    string _value;
+
+
 };
 
 
@@ -36,7 +47,7 @@ class Entry
     Iterator end();
 
   protected:
-    typedef BinaryTree<Entry> BinaryTree;
+    typedef BinaryTree<int, string> BinaryTree;
     typedef typename BinaryTree::Position TPos;
     TPos root() const;
     TPos finder(const int &k, const TPos &v);
