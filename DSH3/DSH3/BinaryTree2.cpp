@@ -11,52 +11,52 @@
 
 using namespace std;
 
-LinkedBinaryTree::Position::Position(Node* u) {
+BinaryTree::Position::Position(Node* u) {
     v = u;
 }
 
-int& LinkedBinaryTree::Position::operator*() {
+int& BinaryTree::Position::operator*() {
     return v->elem;
 }
 
-LinkedBinaryTree::Position LinkedBinaryTree::Position::left() const{
+BinaryTree::Position BinaryTree::Position::left() const{
     return Position(v->left);
 }
 
-LinkedBinaryTree::Position LinkedBinaryTree::Position::right() const {
+BinaryTree::Position BinaryTree::Position::right() const {
     return Position(v->right);
 }
 
-LinkedBinaryTree::Position LinkedBinaryTree::Position::parent() const {
+BinaryTree::Position BinaryTree::Position::parent() const {
     return Position(v->parent);
 }
 
-bool LinkedBinaryTree::Position::isRoot() const {
+bool BinaryTree::Position::isRoot() const {
     return (v->parent == nullptr);
 }
 
-bool LinkedBinaryTree::Position::isExternal() const {
+bool BinaryTree::Position::isExternal() const {
     return (v->left == nullptr && v->right == nullptr);
 }
 
-LinkedBinaryTree::LinkedBinaryTree() {
+BinaryTree::BinaryTree() {
     _root = nullptr;
     n = 0;
 }
 
-int LinkedBinaryTree::size() const {
+int BinaryTree::size() const {
     return n;
 }
 
-bool LinkedBinaryTree::empty() const {
+bool BinaryTree::empty() const {
     return (n==0);
 }
 
-LinkedBinaryTree::Position LinkedBinaryTree::root() const {
+BinaryTree::Position BinaryTree::root() const {
     return Position(_root);
 }
 
-void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
+void BinaryTree::preorder(Node* v, PositionList& pl) const {
     
     pl.push_back(Position(v)); // why cant i just push back v
     
@@ -73,19 +73,19 @@ void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
     }
 }
 
-LinkedBinaryTree::PositionList LinkedBinaryTree::positions() const {
+BinaryTree::PositionList BinaryTree::positions() const {
     PositionList pl;
-    LinkedBinaryTree::preorder(_root, pl);
+    BinaryTree::preorder(_root, pl);
     return PositionList(pl);
 }
 
-void LinkedBinaryTree::addRoot(int e) {
+void BinaryTree::addRoot(int e) {
     _root = new Node;
     _root->elem = e;
     n = 1;
 }
 
-void LinkedBinaryTree::expandExteral(const LinkedBinaryTree::Position &e, int a, int b) {
+void BinaryTree::expandExteral(const BinaryTree::Position &e, int a, int b) {
     Node* parent = e.v;
     Node* left = new Node;
     left->elem = a;
@@ -102,7 +102,7 @@ void LinkedBinaryTree::expandExteral(const LinkedBinaryTree::Position &e, int a,
     n+=2;
 }
 
-LinkedBinaryTree::Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
+BinaryTree::Position BinaryTree::removeAboveExternal(const Position& p) {
     Node* currentNode = p.v;
     Node* parentofCurrent = currentNode->parent;
     
@@ -130,13 +130,13 @@ LinkedBinaryTree::Position LinkedBinaryTree::removeAboveExternal(const Position&
     return Position(sibling);
 }
 
-void LinkedBinaryTree::display(PositionList& a) {
+void BinaryTree::display(PositionList& a) {
     for(list<Position>::iterator p= a.begin();  p != a.end(); ++p) {
         cout << **p << " ";
     }
 }
 
-void LinkedBinaryTree::printPreOrder(const LinkedBinaryTree::Position &a) {
+void BinaryTree::printPreOrder(const BinaryTree::Position &a) {
     Node* current = a.v;
     
     cout << current->elem;
@@ -150,7 +150,7 @@ void LinkedBinaryTree::printPreOrder(const LinkedBinaryTree::Position &a) {
 }
 
 
-int LinkedBinaryTree::maxValue(PositionList& a) {
+int BinaryTree::maxValue(PositionList& a) {
     int maxValue = *a.front();
     for(list<Position>::iterator p= a.begin();  p != a.end(); ++p) {
         if(**p > maxValue) {
@@ -161,8 +161,8 @@ int LinkedBinaryTree::maxValue(PositionList& a) {
 }
 
 
-void LinkedBinaryTree::addNode(int a) {
-    LinkedBinaryTree::Position p = root();
+void BinaryTree::addNode(int a) {
+    BinaryTree::Position p = root();
     cout << "The current size of the tree is " << size() << " and our tree looks like " << endl;
     PositionList tree = positions();
     display(tree);
@@ -201,7 +201,7 @@ void LinkedBinaryTree::addNode(int a) {
     
 }
     
-bool LinkedBinaryTree::hasTwoChildren(LinkedBinaryTree::Position &p) {
+bool BinaryTree::hasTwoChildren(BinaryTree::Position &p) {
     if (p.v->left != nullptr && p.v->right != nullptr) {
         return true;
     }
@@ -210,7 +210,7 @@ bool LinkedBinaryTree::hasTwoChildren(LinkedBinaryTree::Position &p) {
     }
 }
 
-void LinkedBinaryTree::addRightChild(LinkedBinaryTree::Position& p, int a) {
+void BinaryTree::addRightChild(BinaryTree::Position& p, int a) {
     Node* parent = p.v;
     Node* rightChild = new Node;
     rightChild->elem = a;
@@ -220,7 +220,7 @@ void LinkedBinaryTree::addRightChild(LinkedBinaryTree::Position& p, int a) {
     
 }
 
-void LinkedBinaryTree::addLeftChild(LinkedBinaryTree::Position& p, int a) {
+void BinaryTree::addLeftChild(BinaryTree::Position& p, int a) {
     Node* parent = p.v;
     Node* leftChild = new Node;
     leftChild->elem = a;
@@ -231,10 +231,10 @@ void LinkedBinaryTree::addLeftChild(LinkedBinaryTree::Position& p, int a) {
 }
 
 
-void LinkedBinaryTree::printPostOrder(const LinkedBinaryTree::Position& p) {
+void BinaryTree::printPostOrder(const BinaryTree::Position& p) {
     Node* current = p.v;
-    LinkedBinaryTree::Position left = p.left();
-    LinkedBinaryTree::Position right = p.right();
+    BinaryTree::Position left = p.left();
+    BinaryTree::Position right = p.right();
     if (current->left != nullptr) {
         printPostOrder(left);
     }
@@ -245,18 +245,18 @@ void LinkedBinaryTree::printPostOrder(const LinkedBinaryTree::Position& p) {
     cout << current->elem;
 }
 
-int LinkedBinaryTree::minValue(const LinkedBinaryTree::Position& x) {
-    LinkedBinaryTree::Position p = root();
+int BinaryTree::minValue(const BinaryTree::Position& x) {
+    BinaryTree::Position p = root();
     while (p.v->left != nullptr) {
         p = p.left();
     }
     return p.v->elem;
 }
 
-void LinkedBinaryTree::printInOrder(const LinkedBinaryTree::Position &p) {
+void BinaryTree::printInOrder(const BinaryTree::Position &p) {
     Node* current = p.v;
-    LinkedBinaryTree::Position left = p.left();
-    LinkedBinaryTree::Position right = p.right();
+    BinaryTree::Position left = p.left();
+    BinaryTree::Position right = p.right();
     
     if (current->left != nullptr) {
         printInOrder(left);
@@ -267,7 +267,7 @@ void LinkedBinaryTree::printInOrder(const LinkedBinaryTree::Position &p) {
         printInOrder(right);
     }
 }
-int LinkedBinaryTree::maxDepth(const LinkedBinaryTree::Position& a, int currentDepth) {
+int BinaryTree::maxDepth(const BinaryTree::Position& a, int currentDepth) {
     int depthLeft = 0;
     int depthRight = 0;
     
@@ -291,7 +291,7 @@ int LinkedBinaryTree::maxDepth(const LinkedBinaryTree::Position& a, int currentD
     }
 }
 
-int LinkedBinaryTree::height(const LinkedBinaryTree::Position &p) {
+int BinaryTree::height(const BinaryTree::Position &p) {
     int heightLeft = 0;
     int heightRight = 0;
     if (p.isExternal()) {
@@ -313,7 +313,7 @@ int LinkedBinaryTree::height(const LinkedBinaryTree::Position &p) {
     }
 }
 
-void LinkedBinaryTree::EulerWalk(const LinkedBinaryTree::Position &p) {
+void BinaryTree::EulerWalk(const BinaryTree::Position &p) {
     if (p.isExternal()) {
         cout << p.v->elem;
     }
@@ -331,7 +331,7 @@ void LinkedBinaryTree::EulerWalk(const LinkedBinaryTree::Position &p) {
     }
 }
 
-void LinkedBinaryTree::EulerWalk2(const LinkedBinaryTree::Position &p) {
+void BinaryTree::EulerWalk2(const BinaryTree::Position &p) {
     cout << p.v->elem;
     if(!p.isExternal()) {
         EulerWalk2(p.left());
