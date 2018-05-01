@@ -19,7 +19,7 @@ class Entry
     string Value;
 
   public:
-    Entry(const int &k = int(), const string &v = string()) : _key(k), _value(v) {}
+    Entry(const int &k = int(), const string &v = ()) : _key(k), _value(v) {}
 };
 
 class SearchTree
