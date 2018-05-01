@@ -41,7 +41,7 @@ public:
 class Iterator
 {
 private:
-    Tpos v;
+    TPos v;
 
 public:
     Iterator(const TPos &vv) : v(vv) {}
