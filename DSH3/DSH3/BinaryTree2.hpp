@@ -37,6 +37,7 @@ public:
         Position parent() const;
         bool isRoot() const;
         bool isExternal() const;
+        bool operator==(Position& a);
         
         friend class BinaryTree;
         

@@ -39,6 +39,10 @@ bool BinaryTree::Position::isExternal() const {
     return (v->left == nullptr && v->right == nullptr);
 }
 
+bool BinaryTree::Position::operator ==(Position& a) {
+    return v->elem == *a;
+}
+
 BinaryTree::BinaryTree() {
     _root = nullptr;
     n = 0;
