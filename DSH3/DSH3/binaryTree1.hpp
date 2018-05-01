@@ -31,20 +31,23 @@ class Entry
     string _value;
 };
 
-class SearchTree
-{
-    public:
-    class Iterator
-    {
-      private:
-        Tpos v;
 
-      public:
-        Iterator(const TPos &vv) : v(vv) {}
-        const SearchTree &operator*() { return *v; }
-        SearchTree &
-    };
-  public:
+class SearchTree
+
+{
+public:
+    typedef typename BinaryTree::Position TPos;
+class Iterator
+{
+private:
+    Tpos v;
+
+public:
+    Iterator(const TPos &vv) : v(vv) {}
+    const SearchTree &operator*() { return *v; }
+    SearchTree &
+};
+public:
     SearchTree();
     int size() const;
     bool empty() const;
