@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 using namespace std;
+ok;
 
 class Entry
 {
