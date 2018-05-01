@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <string>
-#include "binaryTree2.cpp"
+#include "BinaryTree2.cpp"
 using namespace std;
 
 class Entry
