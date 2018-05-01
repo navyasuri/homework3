@@ -41,6 +41,26 @@ TPos SearchTree::eraser(TPos &v)
     return T.removeAboveExternal(w); // remove w and parent
 }
 
-void SearchTree::erase(const int &k)
+SearchTree::Iterator &SearchTree::Iterator::operator++()
 {
+    SearchTree::TPos w = v.right();
+    if (!w.isExternal())
+    {
+        do
+        {
+            v = w;
+            w = w.left();
+        } while (!w.isExternal());
+    }
+    else
+    {
+        w = v.parent();
+        while (v == w.right())
+        {
+            v = w;
+            w = w.parent();
+        }
+        v = w;
+    }
+    return this;
 }
