@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <string>
-#include "BinaryTree2.cpp"
+#include "BinaryTree2.hpp"
 using namespace std;
 
 class Entry
@@ -45,7 +45,7 @@ private:
 
 public:
     Iterator(const TPos&vv) : v(vv) {}
-    const int& operator*() { return *v; }
+    int& operator*() { return *v; }
     bool operator == (const Iterator& p) const {return v == p.v;}
     Iterator& operator++();
     friend class SearchTree;

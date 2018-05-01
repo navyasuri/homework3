@@ -10,6 +10,7 @@
 #define BinaryTree2_hpp
 
 #include <stdio.h>
+#include "binaryTree1.hpp"
 
 using namespace std;
 //#include <int>
