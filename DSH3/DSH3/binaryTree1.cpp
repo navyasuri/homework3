@@ -8,5 +8,10 @@
 
 #include "binaryTree1.hpp"
 
+int SearchTree::size() const{
     return n;
+}
+
+bool SearchTree::empty() const{
+    return n==0;
 }
