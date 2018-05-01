@@ -8,3 +8,5 @@
 
 #include "binaryTree1.hpp"
 
+    return n;
+}
