@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include "binaryTree1.hpp"
+#include "BinaryTree2.hpp"
 
 int main() {
     
