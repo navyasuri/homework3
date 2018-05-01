@@ -10,14 +10,27 @@
 #define binaryTree1_hpp
 
 #include <stdio.h>
-template <typename K, typename V>
+#include <string>
+using namespace std;
+
 class Entry
 {
-    typedef K Key;
-    typedef V Value;
+    public:
+    Entry(const int& k = 0, const string& v = "") : _key(k), _value(v) {}
 
-  public:
-    Entry(const K &k = K(), const V &v = V()) : _key(k), _value(v) {}
+    // Getters
+    const int& key() const{return _key;}
+    const string& value() const{return _value;}
+
+    // Setters
+    void setKey(const int& k){_key = k;}
+    void setValue(const string& v){_value = v;}
+
+    private:
+    int _key;
+    string _value;
+
+
 };
 
 class SearchTree
