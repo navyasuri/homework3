@@ -25,6 +25,28 @@ void BinaryTree::addRoot() // adding root to empty tree
     _root=new Node; n=1;
 }
 
+BinaryTree::Position BinaryTree::Position::left() const{
+    return Position(v->left);
+}
+
+BinaryTree::Position BinaryTree::Position::right() const {
+    return Position(v->right);
+}
+
+BinaryTree::Position BinaryTree::Position::parent() const {
+    return Position(v->parent);
+}
+
+bool BinaryTree::Position::isRoot() const {
+    return (v->parent == nullptr);
+}
+
+bool BinaryTree::Position::isExternal() const {
+    return (v->left == nullptr && v->right == nullptr);
+}
+
+
+
 void BinaryTree::expandExternal(const Position&p)
 {
     Node*v=p.v;
@@ -71,4 +93,9 @@ void BinaryTree::preorder(Node* v, PositionList& pl)const {
 
 }
 
-SearchTree::
+SearchTree::Iterator& SearchTree::Iterator::operator++(){
+    Tpos w= t.right();
+    if (w.isInternal()){
+        do{t=w; w=w.left();
+        while(w.isInternal()}
+}
