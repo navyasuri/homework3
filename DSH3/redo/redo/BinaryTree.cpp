@@ -24,29 +24,6 @@ void BinaryTree::addRoot() // adding root to empty tree
 {
     _root=new Node; n=1;
 }
-
-BinaryTree::Position BinaryTree::Position::left() const{
-    return Position(v->left);
-}
-
-BinaryTree::Position BinaryTree::Position::right() const {
-    return Position(v->right);
-}
-
-BinaryTree::Position BinaryTree::Position::parent() const {
-    return Position(v->parent);
-}
-
-bool BinaryTree::Position::isRoot() const {
-    return (v->parent == nullptr);
-}
-
-bool BinaryTree::Position::isExternal() const {
-    return (v->left == nullptr && v->right == nullptr);
-}
-
-
-
 void BinaryTree::expandExternal(const Position&p)
 {
     Node*v=p.v;
@@ -96,6 +73,121 @@ void BinaryTree::preorder(Node* v, PositionList& pl)const {
 SearchTree::Iterator& SearchTree::Iterator::operator++(){
     Tpos w= t.right();
     if (w.isInternal()){
-        do{t=w; w=w.left();
-        while(w.isInternal()}
+        do{t=w; w=w.left();}
+            while(w.isInternal());
+    }
+        else {
+            w = t.parent(); {
+                t = w; w = w.parent();
+            }
+            t = w;
+        }
+    return *this;
 }
+
+int SearchTree::size() const{
+    return n;
+}
+
+bool SearchTree::empty() const {
+    return n==0;
+}
+
+SearchTree::Tpos SearchTree::finder(const int& k, const Tpos& x) {
+
+    
+    if (x.isExternal()) {
+        return x;
+    }
+    
+    if (k < x.v->elt.key()) {
+        return finder(k, x.left());
+    }
+    else if (k > x.v->elt.key()) {
+        return finder(k, x.right());
+    }
+    else {
+        return x;
+    }
+    
+//
+//    if (k < *(x).key()) {
+//        finder(k, x.left());
+//    }
+    
+}
+
+SearchTree::Iterator SearchTree::find(const int& K) { // returns an iterator rather than a Tpos
+    
+    Tpos v = finder(K, root()); //begin by looking at the root
+    
+    if (v.isInternal()) {
+        return Iterator(v);
+    }
+    else {
+        return end(); // this means it did not find it
+    }
+    
+}
+
+SearchTree::Tpos SearchTree::inserter(const int& k, const string& v) {
+    Tpos w = finder(k, root());
+    while (w.isInternal()) { // the key is already there, we have to look to the right because whenever a key is the same, we gon right rather than left
+        w = finder(k, w.right());
+    }
+    
+    T.expandExternal(w);
+    w.v->elt.setKey(k);
+    w.v->elt.setValue(v);
+    n++;
+    return w;
+}
+
+SearchTree::Iterator SearchTree::insert(const int& k, const string& x) { //only purpose is to call the inserter and return an iterator
+    Tpos v = inserter(k, x);
+    return Iterator(v);
+}
+
+SearchTree::Tpos SearchTree::eraser(Tpos& s) {
+    Tpos w;
+    if(s.left().isExternal()) {
+        w=s.left();
+    }
+    else if (s.right().isExternal()) {
+        w=s.right();
+    }
+    else {
+        w = s.right(); // start searching right subtree
+        do {
+            w = s.left();
+        }
+        while (
+               w.isInternal() // keet doing this until w is external
+               );
+        Tpos u = w.parent();
+        s.v->elt.setKey(u.v->elt.key());
+        s.v->elt.setValue(u.v->elt.value());
+    }
+    n--;
+    return T.removeAboveExternal(w);
+}
+
+void SearchTree::erase(const int& K) {
+    Tpos v = finder(K, root());
+    eraser(v);
+    // throw an exception for when v.isExternal
+}
+
+void SearchTree::erase(Iterator& p){
+    eraser(p.t); // the Tpos in class Iterator is called t;
+}
+
+SearchTree::Tpos SearchTree::root() const {
+    return T.root().left(); // there is a super root that is created in the constructor, so the "real root" is this one
+}
+
+
+
+
+
+

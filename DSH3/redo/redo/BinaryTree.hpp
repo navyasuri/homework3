@@ -47,13 +47,14 @@ public:
     public:
         Node* v;
         Position(Node* _v=NULL):v(_v){}
-        int operator*(){return this->v->elt.key();}
+        Entry& operator*(){return v->elt;}
         //int operator*(){return v->elt.key();}
-        Position left() {return Position(v->left);}
-        Position right() {return Position(v->right);}
+        Position left() const {return Position(v->left);}
+        Position right() const {return Position(v->right);}
         Position parent() {return Position(v->par);}
         bool isRoot() const{return v->par==NULL;}
         bool isExternal() const {return v->left==NULL && v->right==NULL;}
+        bool isInternal() const {return !isExternal();}
         friend class BinaryTree;
         friend class SearchTree;
     }; typedef list<Position> PositionList;
@@ -81,22 +82,22 @@ class SearchTree{
 public:
     class Iterator;
 public:
-    SearchTree();
+    SearchTree(): T(), n(0) {T.addRoot(); T.expandExternal(T.root());}
     int size() const;
     bool empty() const;
     Iterator find(const int& K);
     Iterator insert(const int& k, const string& x);
-    void erase(const int& K);
-    void erase(const Iterator& p);
+    void erase(const int& K); //need to add the exception
+    void erase(Iterator& p); //we need to drop the const for it to work
     Iterator begin();
     Iterator end();
 protected:
     typedef typename BinaryTree::Position Tpos;
     Tpos root() const;
-    Tpos finder(const int& k, const Tpos& v);
+    Tpos finder(const int& k, const Tpos& x);
     Tpos inserter(const int& k, const string& v);
-    Tpos eraser(Tpos& v);
-    Tpos restructure(const Tpos& v);
+    Tpos eraser(Tpos& s);
+    Tpos restructure(const Tpos& v); // why would we need a restructure operation
 private:
     BinaryTree T;
     int n;
@@ -107,15 +108,15 @@ public:
         Tpos t;
     public:
         Iterator(Tpos& vv):t(vv){}
-        int operator*() {return t.v->elt.key();}// read and write
-        bool operator==(const Iterator& p) const {
-            //return &(t.v->elt) == &(p.t.v->elt); //this would compare addresses
-            return t.v->elt.key() == p.t.v->elt.key();} //this would compare the keys
+        int operator*() {return t.v->elt.key();}
+//        bool operator==(const Iterator& p) const {
+//            //return &(t.v->elt) == &(p.t.v->elt); //this would compare addresses
+//            return t.v->elt.key() == p.t.v->elt.key();} //this would compare the keys
         Iterator& operator++();
         friend class SearchTree;
     };
     
-    };
+};
     
     
     
