@@ -13,25 +13,25 @@
 using namespace std;
 #include <stdio.h>
 
+class Entry
+{
+public:
+    Entry(const int &k = 0, const string &v = "") : _key(k), _value(v) {}
+    
+    // Getters
+    const int key() const { return _key; }
+    const string value() const { return _value; }
+    
+    // Setters
+    void setKey(const int &k) { _key = k; }
+    void setValue(const string &v) { _value = v; }
+private:
+    int _key;
+    string _value;
+    friend class SearchTree;
+};
 class BinaryTree{
 public:
-    class Entry
-    {
-    public:
-        Entry(const int &k = 0, const string &v = "") : _key(k), _value(v) {}
-        
-        // Getters
-        const int key() const { return _key; }
-        const string value() const { return _value; }
-        
-        // Setters
-        void setKey(const int &k) { _key = k; }
-        void setValue(const string &v) { _value = v; }
-    private:
-        int _key;
-        string _value;
-        friend class SearchTree;
-    };
     
     struct Node{
         Entry elt;
@@ -43,11 +43,11 @@ public:
 public:
     class Position{
     private:
-        
-    public:
         Node* v;
+    public:
+       
         Position(Node* _v=NULL):v(_v){}
-        Entry& operator*(){return v->elt;}
+        Entry& operator*() const {return v->elt;}
         //int operator*(){return v->elt.key();}
         Position left() const {return Position(v->left);}
         Position right() const {return Position(v->right);}
@@ -92,7 +92,8 @@ public:
     Iterator begin();
     Iterator end();
 protected:
-    typedef typename BinaryTree::Position Tpos;
+    //typedef typename BinaryTree::Position Tpos;
+    typedef  BinaryTree::Position Tpos;
     Tpos root() const;
     Tpos finder(const int& k, const Tpos& x);
     Tpos inserter(const int& k, const string& v);
@@ -108,7 +109,10 @@ public:
         Tpos t;
     public:
         Iterator(Tpos& vv):t(vv){}
-        int operator*() {return t.v->elt.key();}
+        const Entry& operator*() const { return *t;};
+        Entry& operator*() { return *t;};
+        
+//        int operator*() {return t.v->elt.key();}
 //        bool operator==(const Iterator& p) const {
 //            //return &(t.v->elt) == &(p.t.v->elt); //this would compare addresses
 //            return t.v->elt.key() == p.t.v->elt.key();} //this would compare the keys
@@ -119,40 +123,5 @@ public:
 };
     
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif /* BinaryTree_hpp */

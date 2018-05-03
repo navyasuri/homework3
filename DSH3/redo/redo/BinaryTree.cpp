@@ -110,25 +110,25 @@ SearchTree::Tpos SearchTree::finder(const int& k, const Tpos& x) {
         return x;
     }
     
-//
-//    if (k < *(x).key()) {
-//        finder(k, x.left());
-//    }
+
+    if (k < (*x).key()) {
+        finder(k, x.left());
+    }
     
 }
 
-SearchTree::Iterator SearchTree::find(const int& K) { // returns an iterator rather than a Tpos
-    
-    Tpos v = finder(K, root()); //begin by looking at the root
-    
-    if (v.isInternal()) {
-        return Iterator(v);
-    }
-    else {
-        return end(); // this means it did not find it
-    }
-    
-}
+//SearchTree::Iterator SearchTree::find(const int& K) { // returns an iterator rather than a Tpos
+//
+//    Tpos v = finder(K, root()); //begin by looking at the root
+//
+//    if (v.isInternal()) {
+//        return Iterator(v);
+//    }
+//    else {
+//        return end(); // this means it did not find it
+//    }
+//
+//}
 
 SearchTree::Tpos SearchTree::inserter(const int& k, const string& v) {
     Tpos w = finder(k, root());
