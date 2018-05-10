@@ -46,7 +46,7 @@ int main()
     // Create an OrderedMap, fill it, then disply it
     OrderedMap<int, int> oMap ;
     cout<<"nSize= "<<oMap.getSize()<<endl ;
-    oMap.put(35,125) ;
+    oMap.put(25,125) ;
     oMap.put(25,135) ;
     oMap.put(55,145) ;
     oMap.put(55,155) ;
