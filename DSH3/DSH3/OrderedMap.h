@@ -4,14 +4,14 @@
 #include "BinarySearchTrees.h"
 
 template <typename KK, typename VV>
-class OrderedMap: public SearchTree<Entry<KK,VV>> {
+class OrderedMap: public SearchTree<Entry<KK,VV> > {
 public:
     // Usefull Typedef
-    typedef  SearchTree<Entry<KK,VV>> BST;
-    typedef typename SearchTree<Entry<KK,VV>>::Iterator BSTIterator;
+    typedef  SearchTree<Entry<KK,VV> > BST;
+    typedef typename SearchTree<Entry<KK,VV> >::Iterator BSTIterator;
 
 public:
-    OrderedMap(): SearchTree<Entry<KK,VV>>(){}
+    OrderedMap(): SearchTree<Entry<KK,VV> >(){}
     int size () const ;
     bool empty () const ;
     BSTIterator find ( const KK& k) const {find(k);}
@@ -23,10 +23,10 @@ public:
 } ;
 
 template <typename KK, typename VV>
-int OrderedMap<KK,VV>::size() const {return SearchTree<Entry<KK,VV>>::getSize() ;}
+int OrderedMap<KK,VV>::size() const {return SearchTree<Entry<KK,VV> >::getSize() ;}
 
 template <typename KK, typename VV>
-bool OrderedMap<KK,VV>::empty() const {return SearchTree<Entry<KK,VV>>::isEmpty() ; }
+bool OrderedMap<KK,VV>::empty() const {return SearchTree<Entry<KK,VV> >::isEmpty() ; }
 
 
 #endif /* DirectedMap_h */
