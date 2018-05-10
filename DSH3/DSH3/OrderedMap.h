@@ -54,15 +54,17 @@ public:
 
     BSTIterator lowerEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>(**(++starter)).key()){
-            //we might not need anything here
+        BSTIterator oneAhead = starter++;
+        while (oneAhead != BST::end() && key>(**oneAhead).key()){
+            oneAhead++;
+            starter++;
         }
         return starter;
     }
 
     BSTIterator higherEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>**starter.key()){
+        while (starter != BST::end() && key>=(**starter).key()){
             ++starter;
         }
         return starter;
