@@ -20,6 +20,20 @@ public:
     void erase ( const BSTIterator & p);
     BSTIterator begin () {return BST::begin(); }
     BSTIterator end () {return BST::end();}
+
+
+    BSTIterator firstEntry(){
+        return Iterator(BST::root());
+    }
+
+    BSTIterator lastEntry(){
+        BSTIterator starter = BST::begin();
+        for (int i = 0; i<size(); i++){
+            starter++;
+        }
+        return starter;
+    }
+
 } ;
 
 template <typename KK, typename VV>
