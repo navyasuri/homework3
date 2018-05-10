@@ -36,7 +36,7 @@ public:
 
     BSTIterator ceilingEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>**starter.key()){
+        while (starter != BST::end() && key>(**starter).key()){
             ++starter;
         }
         return starter;
@@ -44,8 +44,10 @@ public:
 
     BSTIterator floorEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>(**(++starter)).key()){
-            //we might not need anything here
+        BSTIterator oneAhead = starter++;
+        while (oneAhead != BST::end() && key>(**oneAhead).key()){
+            oneAhead++;
+            starter++;
         }
         return starter;
     }
