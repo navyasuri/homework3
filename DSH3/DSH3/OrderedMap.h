@@ -29,10 +29,28 @@ public:
     BSTIterator lastEntry(){
         BSTIterator starter = BST::begin();
         for (int i = 0; i<size(); i++){
-            starter++;
+            ++starter;
         }
         return starter;
     }
+
+    BSTIterator ceilingEntry(const KK& key){
+        BSTIterator starter = firstEntry();
+        while (starter != BST::end() && key<**starter.key()){
+            ++starter;
+        }
+        return starter;
+    }
+
+    BSTIterator floorEntry(const KK& key){
+        BSTIterator starter = firstEntry();
+        while (starter != BST::end() && key<(**(++starter)).key()){
+            //we might not need anything here
+        }
+        return starter;
+    }
+
+    BSTIterator lowerEntry()
 
 } ;
 
