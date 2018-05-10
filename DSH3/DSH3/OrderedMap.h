@@ -36,7 +36,7 @@ public:
 
     BSTIterator ceilingEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>(**starter).key()){
+        while (!(starter == BST::end()) && key>(*starter).key()){
             ++starter;
         }
         return starter;
@@ -44,27 +44,31 @@ public:
 
     BSTIterator floorEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        BSTIterator oneAhead = starter++;
-        while (oneAhead != BST::end() && key>=(**oneAhead).key()){
-            oneAhead++;
-            starter++;
+        BSTIterator oneAhead = ++starter;
+        while (!(oneAhead == BST::end()) && key>=(*oneAhead).key()){
+            ++oneAhead;
+            ++starter;
         }
         return starter;
     }
 
     BSTIterator lowerEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        BSTIterator oneAhead = starter++;
-        while (oneAhead != BST::end() && key>(**oneAhead).key()){
-            oneAhead++;
-            starter++;
+        BSTIterator oneBehind = starter;
+        if (!(starter == BST::end()) && key>(*starter).key()){
+            ++starter;
         }
-        return starter;
+
+        while(!(starter == BST::end()) && key>(*starter).key()){
+            ++starter;
+            ++oneBehind;
+        }
+        return oneBehind;
     }
 
     BSTIterator higherEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key>=(**starter).key()){
+        while (!(starter == BST::end()) && key>=(*starter).key()){
             ++starter;
         }
         return starter;
