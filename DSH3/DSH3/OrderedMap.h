@@ -23,7 +23,7 @@ public:
 
 
     BSTIterator firstEntry(){
-        return Iterator(BST::root());
+        return BST::begin();
     }
 
     BSTIterator lastEntry(){
@@ -36,7 +36,7 @@ public:
 
     BSTIterator ceilingEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key<**starter.key()){
+        while (starter != BST::end() && key>**starter.key()){
             ++starter;
         }
         return starter;
@@ -44,13 +44,27 @@ public:
 
     BSTIterator floorEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        while (starter != BST::end() && key<(**(++starter)).key()){
+        while (starter != BST::end() && key>(**(++starter)).key()){
             //we might not need anything here
         }
         return starter;
     }
 
-    BSTIterator lowerEntry()
+    BSTIterator lowerEntry(const KK& key){
+        BSTIterator starter = firstEntry();
+        while (starter != BST::end() && key>(**(++starter)).key()){
+            //we might not need anything here
+        }
+        return starter;
+    }
+
+    BSTIterator higherEntry(const KK& key){
+        BSTIterator starter = firstEntry();
+        while (starter != BST::end() && key>**starter.key()){
+            ++starter;
+        }
+        return starter;
+    }
 
 } ;
 
