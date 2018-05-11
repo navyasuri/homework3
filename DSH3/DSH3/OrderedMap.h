@@ -87,7 +87,7 @@ public:
     // It does reverse inorder traversal
     void print2DUtil(int space)
     {
-        SearchTree<<Entry<KK, VV> >::TPos root = BST::root();
+        typename BST::TPos root = BST::root();
         // Base case
         if (root == NULL)
             return;
@@ -110,7 +110,7 @@ public:
     }
     
     // Wrapper over print2DUtil()
-    void print2D(BST::TPos *root)
+    void print2D(typename BST::TPos *root)
     {
         // Pass initial space count as 0
         print2DUtil(root, 0);

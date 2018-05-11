@@ -3,7 +3,6 @@
 
 #include "OrderedMap.h"
 
-#include <bits/stdc++.h>
 #include <algorithm>
 #include <iostream>     
 
@@ -64,12 +63,12 @@ class TupleValues{
 
 ostream& operator <<(ostream& os, const TupleKeys& tk){
     //Overloading the ostream operator
-    cout<<"( "<<tk.A<<", "<<tk.B<<", "<<tk.C<<", "<<tk.D<<" )";
+    return cout<<"( "<<tk.A<<", "<<tk.B<<", "<<tk.C<<", "<<tk.D<<" )";
 }
 
 ostream& operator <<(ostream& os, const TupleValues& tv){
     //Overloading the ostream operator
-    cout<<"( "<<tv.A<<", "<<tv.B<<", "<<tv.C<<", "<<tv.D<<", "<<tv.E<<" )";
+    return cout<<"( "<<tv.A<<", "<<tv.B<<", "<<tv.C<<", "<<tv.D<<", "<<tv.E<<" )";
 }
 
 #endif
