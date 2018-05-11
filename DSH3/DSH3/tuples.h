@@ -31,6 +31,7 @@ class TupleKeys{
         int timeInt = atoi(timer.c_str());
         DTime = timeInt;
     }
+    TupleKeys():A(""), B(""), C(""), D(""){}
 
     bool operator <(const TupleKeys& tk){
         return DTime < tk.DTime;
@@ -54,6 +55,7 @@ class TupleValues{
     public:
     string A, B, C, D, E;
     TupleValues(string a, string b, string c, string d, string e):A(a), B(b), C(c), D(d), E(e){}
+    TupleValues():A(""), B(""), C(""), D(""), E(""){}
 };
 
 

@@ -55,7 +55,7 @@ int main()
     // while( !(iter == oMap.end())) {
     //     cout<<(*iter).key()<<", "<<(*iter).value()<<endl ;
     //     ++iter;
-    
+    }
 
     // SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
     // cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
