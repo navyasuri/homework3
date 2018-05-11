@@ -2,7 +2,6 @@
 #define BINARYSEARCHTREES_H_INCLUDED
 #include "BinaryTrees.h"
 
-#include <bits/stdc++.h>
 
 
 //Entry class here
