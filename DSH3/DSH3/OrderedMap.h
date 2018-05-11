@@ -3,6 +3,8 @@
 
 #include "BinarySearchTrees.h"
 
+#define COUNT 10
+
 template <typename KK, typename VV>
 class OrderedMap: public SearchTree<Entry<KK,VV> > {
 public:
@@ -20,7 +22,7 @@ public:
     void erase ( const BSTIterator & p);
     BSTIterator begin () {return BST::begin(); }
     BSTIterator end () {return BST::end();}
-    void print2DUtil(BST::TPos *root, int space);
+    // void print2DUtil(int space);
 
 
     BSTIterator firstEntry(){
@@ -83,8 +85,9 @@ public:
     
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
-    void print2DUtil(Node *root, int space)
+    void print2DUtil(int space)
     {
+        SearchTree<<Entry<KK, VV> >::TPos root = BST::root();
         // Base case
         if (root == NULL)
             return;
@@ -93,21 +96,21 @@ public:
         space += COUNT;
         
         // Process right child first
-        print2DUtil(root->right, space);
+        print2DUtil(root.right(), space);
         
         // Print current node after space
         // count
-        printf("\n");
+        cout<<endl;
         for (int i = COUNT; i < space; i++)
-            printf(" ");
-        printf("%d\n", root->data);
+            cout<<" ";
+        cout<<*root;
         
         // Process left child
-        print2DUtil(root->left, space);
+        print2DUtil(root.left(), space);
     }
     
     // Wrapper over print2DUtil()
-    void print2D(Node *root)
+    void print2D(BST::TPos *root)
     {
         // Pass initial space count as 0
         print2DUtil(root, 0);
