@@ -22,7 +22,7 @@ public:
     void erase ( const BSTIterator & p);
     BSTIterator begin () {return BST::begin(); }
     BSTIterator end () {return BST::end();}
-    // void print2DUtil(int space);
+
 
 
     BSTIterator firstEntry(){
