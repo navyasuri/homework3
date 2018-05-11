@@ -66,6 +66,7 @@ int main()
     cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
 
     
+<<<<<<< HEAD
     SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
     cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
 
@@ -78,6 +79,8 @@ int main()
     cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
 
 
+=======
+>>>>>>> 8f5a8b951cdf827846221393d06dd6fef57028c7
     
 #elif PART==4
     TupleKeys tkeys("ORD", "PVD", "05May", "09:53");
