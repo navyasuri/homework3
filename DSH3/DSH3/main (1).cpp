@@ -62,25 +62,36 @@ int main()
         ++iter;
     }
 
-    SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
-    cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator lower = oMap.lowerEntry(TupleKeys("ORD", "PVD", "05May", "13:00"));
+    cout<<"lower than 13:00 is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
 
     
-<<<<<<< HEAD
-    SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
-    cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator higher = oMap.higherEntry(TupleKeys("ORD", "PVD", "05May", "13:00"));
+    cout<<"higher than 13:00 is "<<(*higher).key()<<", "<<(*higher).value() <<endl;  
 
 
-    SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
-    cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator ceiler = oMap.ceilingEntry(TupleKeys("ORD", "PVD", "05May", "13:29"));
+    cout<<"ceiling of 13:29 is "<<(*ceiler).key()<<", "<<(*ceiler).value() <<endl;  
 
 
-    SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
-    cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator floorer = oMap.floorEntry(TupleKeys("ORD", "PVD", "05May", "13:29"));
+    cout<<"floor of 13:29 is "<<(*floorer).key()<<", "<<(*floorer).value() <<endl;  
+
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator lower1 = oMap.lowerEntry(TupleKeys("ORD", "PVD", "05May", "13:29"));
+    cout<<"lower than 13:29 is "<<(*lower1).key()<<", "<<(*lower1).value() <<endl;  
+
+    
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator higher1 = oMap.higherEntry(TupleKeys("ORD", "PVD", "05May", "13:29"));
+    cout<<"higher than 13:29 is "<<(*higher1).key()<<", "<<(*higher1).value() <<endl;  
 
 
-=======
->>>>>>> 8f5a8b951cdf827846221393d06dd6fef57028c7
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator ceiler1 = oMap.ceilingEntry(TupleKeys("ORD", "PVD", "05May", "13:00"));
+    cout<<"ceiling of 13:00 is "<<(*ceiler1).key()<<", "<<(*ceiler1).value() <<endl;  
+
+
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator floorer1 = oMap.floorEntry(TupleKeys("ORD", "PVD", "05May", "13:00"));
+    cout<<"floor of 13:00 is "<<(*floorer1).key()<<", "<<(*floorer1).value() <<endl;
+
     
 #elif PART==4
     TupleKeys tkeys("ORD", "PVD", "05May", "09:53");

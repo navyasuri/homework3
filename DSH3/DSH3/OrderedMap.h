@@ -47,7 +47,8 @@ public:
 
     BSTIterator floorEntry(const KK& key){
         BSTIterator starter = firstEntry();
-        BSTIterator oneAhead = ++starter;
+        BSTIterator oneAhead = starter;
+        ++oneAhead;
         while (!(oneAhead == BST::end()) && key>=(*oneAhead).key()){
             ++oneAhead;
             ++starter;

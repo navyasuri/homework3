@@ -51,6 +51,13 @@ class TupleKeys{
         return DTime != tk.DTime;
     }
 
+    bool operator <= (const TupleKeys& tk) const{
+        return DTime <= tk.DTime;
+    }
+
+    bool operator >= (const TupleKeys& tk) const{
+        return DTime >= tk.DTime;
+    }
     
 };
 
