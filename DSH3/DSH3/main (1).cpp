@@ -64,8 +64,9 @@ int main()
 
     // SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
     // cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
-
-
+    
+    oMap.print2DUtil(oMap.root(),5);
+    
 #elif PART==4
     TupleKeys tkeys("ORD", "PVD", "05May", "09:53");
     

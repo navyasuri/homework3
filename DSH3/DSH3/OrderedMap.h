@@ -85,9 +85,9 @@ public:
     
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
-    void print2DUtil(int space)
+    void print2DUtil(typename BST::TPos root,int space)
     {
-        typename BST::TPos root = BST::root();
+       // typename BST::TPos root = BST::root();
         // Base case
         if (root == NULL)
             return;
@@ -103,7 +103,7 @@ public:
         cout<<endl;
         for (int i = COUNT; i < space; i++)
             cout<<" ";
-        cout<<*root;
+        cout<<*(root;
         
         // Process left child
         print2DUtil(root.left(), space);
