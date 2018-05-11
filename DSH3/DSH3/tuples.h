@@ -9,6 +9,9 @@
 
 // using namespace std;
 
+//TUPLEKEYS
+
+
 string RemoveChar(string str, char c) 
 {
    string result;
@@ -33,19 +36,19 @@ class TupleKeys{
     }
     TupleKeys():A(""), B(""), C(""), D(""){}
 
-    bool operator <(const TupleKeys& tk){
+    bool operator <(const TupleKeys& tk) const{
         return DTime < tk.DTime;
     }
 
-    bool operator >(const TupleKeys& tk){
+    bool operator >(const TupleKeys& tk) const{
         return DTime > tk.DTime;
     }
 
-    bool operator == (const TupleKeys& tk){
+    bool operator == (const TupleKeys& tk) const{
         return DTime == tk.DTime;
     }
 
-    bool operator != (const TupleKeys& tk){
+    bool operator != (const TupleKeys& tk) const{
         return DTime != tk.DTime;
     }
     

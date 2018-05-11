@@ -45,17 +45,19 @@ int main()
 
 #elif PART==3
     // Create an OrderedMap, fill it, then disply it
-    OrderedMap<TupleKeys, TupleValues> oMap ;
+    OrderedMap<TupleKeys, TupleValues > oMap ;
     cout<<"nSize= "<<oMap.getSize()<<endl ;
 
-    oMap.put(TupleKeys("", "", "", ""), TupleValues("", "", "", "", ""));
+    oMap.put(TupleKeys("ORD", "PVD", "05May", "09:53"), TupleValues("AA 1840", "F5", "Y15", "02:05", "$251"));
+
+    // oMap.put(TupleKeys("", "", "", ""), TupleValues("", "", "", "", ""));
     
   
     // SearchTree<Entry<TupleKeys,TupleValues> >::Iterator iter=oMap.begin() ;
     // while( !(iter == oMap.end())) {
     //     cout<<(*iter).key()<<", "<<(*iter).value()<<endl ;
     //     ++iter;
-    }
+    // }
 
     // SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
     // cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
