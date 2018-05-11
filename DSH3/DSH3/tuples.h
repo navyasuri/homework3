@@ -5,7 +5,7 @@
 
 #include <bits/stdc++.h>
 #include <algorithm>
-#include <sstream>
+#include <iostream>     
 
 // using namespace std;
 
@@ -51,6 +51,7 @@ class TupleKeys{
     bool operator != (const TupleKeys& tk) const{
         return DTime != tk.DTime;
     }
+
     
 };
 
@@ -61,5 +62,14 @@ class TupleValues{
     TupleValues():A(""), B(""), C(""), D(""), E(""){}
 };
 
+ostream& operator <<(ostream& os, const TupleKeys& tk){
+    //Overloading the ostream operator
+    cout<<"( "<<tk.A<<", "<<tk.B<<", "<<tk.C<<", "<<tk.D<<" )";
+}
+
+ostream& operator <<(ostream& os, const TupleValues& tv){
+    //Overloading the ostream operator
+    cout<<"( "<<tv.A<<", "<<tv.B<<", "<<tv.C<<", "<<tv.D<<", "<<tv.E<<" )";
+}
 
 #endif

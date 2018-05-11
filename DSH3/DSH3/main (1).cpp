@@ -47,17 +47,20 @@ int main()
     // Create an OrderedMap, fill it, then disply it
     OrderedMap<TupleKeys, TupleValues > oMap ;
     cout<<"nSize= "<<oMap.getSize()<<endl ;
-
+    
+    oMap.put(TupleKeys("ORD", "PVD", "05May", "19:50"), TupleValues("AA 1828", "F9", "Y25", "02:13", "$186"));
     oMap.put(TupleKeys("ORD", "PVD", "05May", "09:53"), TupleValues("AA 1840", "F5", "Y15", "02:05", "$251"));
-
+    oMap.put(TupleKeys("ORD", "PVD", "05May", "13:29"), TupleValues("AA 600", "F2", "Y0", "02:16", "$713"));
+    oMap.put(TupleKeys("ORD", "PVD", "05May", "17:39"), TupleValues("AA 416", "F3", "Y9", "02:09", "$365"));
+    
     // oMap.put(TupleKeys("", "", "", ""), TupleValues("", "", "", "", ""));
     
   
-    // SearchTree<Entry<TupleKeys,TupleValues> >::Iterator iter=oMap.begin() ;
-    // while( !(iter == oMap.end())) {
-    //     cout<<(*iter).key()<<", "<<(*iter).value()<<endl ;
-    //     ++iter;
-    // }
+    SearchTree<Entry<TupleKeys,TupleValues> >::Iterator iter=oMap.begin() ;
+    while( !(iter == oMap.end())) {
+        cout<<(*iter).key()<<", "<<(*iter).value()<<endl ;
+        ++iter;
+    }
 
     // SearchTree<Entry<int,string> >::Iterator lower = oMap.lowerEntry(1200);
     // cout<<"lower is "<<(*lower).key()<<", "<<(*lower).value() <<endl;  
