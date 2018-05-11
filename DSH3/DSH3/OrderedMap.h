@@ -103,7 +103,7 @@ public:
         cout<<endl;
         for (int i = COUNT; i < space; i++)
             cout<<" ";
-        cout<<*(root;
+        cout<<*root;
         
         // Process left child
         print2DUtil(root.left(), space);

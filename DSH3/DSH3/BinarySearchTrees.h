@@ -170,4 +170,11 @@ template <typename E>
 void SearchTree<E>::erase(const Iterator& p)
 {erase(p.v);}
 
+
+template<typename K, typename V>
+ostream& operator <<(ostream& os, const Entry<K, V>& E){
+    //Overloading the ostream operator
+    return cout<<E.key()<<E.value();
+}
+
 #endif // BINARYSEARCHTREES_H_INCLUDED

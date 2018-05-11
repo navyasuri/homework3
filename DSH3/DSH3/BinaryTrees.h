@@ -130,4 +130,10 @@ void LinkedBinaryTree<E>::preorder(Node* v, PositionList& pl) const{
     if(v->right != NULL)
         preorder(v->right, pl);
 }
+
+template <typename E>
+ostream& operator <<(ostream& os, const typename LinkedBinaryTree<E>::Position& p){
+    //Overloading the ostream operator
+    return cout<<*p;
+}
 #endif // BINARYTREES_H_INCLUDED
